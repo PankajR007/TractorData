@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { TractorDataService } from '../tractor-data.service';
+import { TractorDataService } from '../tractor-data.service'; 
+
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html'
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
   // First form selections

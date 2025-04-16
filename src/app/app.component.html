@@ -1,10 +1,18 @@
-<h2>Tractor Data</h2>
+<div class="app-header">
+    <div class="container">
+        <h2 class="text-center">Tractor Data - {{router.url === '/admin' ? 'Admin' : 'User'}}</h2>
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-6 text-center">
-            <button class="btn btn-primary me-3" routerLink="/admin">Admin</button>
-            <button class="btn btn-primary" routerLink="/user">User</button>
+        <div class="text-center">
+            <div class="nav-tabs-custom">
+                <button class="nav-link" routerLink="/admin" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    Admin
+                </button>
+                <button class="nav-link" routerLink="/user" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    User
+                </button>
+            </div>
         </div>
     </div>
 </div>
