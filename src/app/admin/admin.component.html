@@ -1,0 +1,103 @@
+<div class="container mt-4">
+    <form (ngSubmit)="onSubmit()" #selectionForm="ngForm">
+        <div class="row align-items-center">
+            <div class="col-md-2">
+                <label for="manufacturer" class="form-label fw-bold">Manufacturer:</label>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="manufacturer" name="manufacturer" [(ngModel)]="selectedManufacturer"
+                    required>
+                    <option value="" disabled>Select Manufacturer</option>
+                    <option value="eicher">Eicher</option>
+                    <option value="mahindra">Mahindra</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-3">
+            <div class="col-md-2">
+                <label for="model" class="form-label fw-bold">Model:</label>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="model" name="model" [(ngModel)]="selectedModel" required>
+                    <option value="" disabled>Select Model</option>
+                    <option value="380">380</option>
+                    <option value="480">480</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-3">
+            <div class="col-md-2">
+                <label for="year" class="form-label fw-bold">Year:</label>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="year" name="year" [(ngModel)]="selectedYear" required>
+                    <option value="" disabled>Select Year</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-4">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary" [disabled]="!selectionForm.form.valid">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container mt-4" *ngIf="showSecondForm">
+    <form (ngSubmit)="onValuesSubmit()" #valuesForm="ngForm">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <label for="baseValue" class="form-label fw-bold">Base Value:</label>
+                <input type="number" class="form-control" id="baseValue" name="baseValue"
+                    [(ngModel)]="formValues.baseValue" required>
+            </div>
+            <div class="col-md-4">
+                <label for="rearValue" class="form-label fw-bold">Rear Tyre:</label>
+                <input type="number" class="form-control" id="rearValue" name="rearValue"
+                    [(ngModel)]="formValues.rearValue" required>
+            </div>
+            <div class="col-md-4">
+                <label for="frontValue" class="form-label fw-bold">Front Tyre:</label>
+                <input type="number" class="form-control" id="frontValue" name="frontValue"
+                    [(ngModel)]="formValues.frontValue" required>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-3">
+            <div class="col-md-4">
+                <label for="lookValue" class="form-label fw-bold">Look:</label>
+                <input type="number" class="form-control" id="lookValue" name="lookValue"
+                    [(ngModel)]="formValues.lookValue" required>
+            </div>
+            <div class="col-md-4">
+                <label for="ownerValue" class="form-label fw-bold">Owner:</label>
+                <input type="number" class="form-control" id="ownerValue" name="ownerValue"
+                    [(ngModel)]="formValues.ownerValue" required>
+            </div>
+            <div class="col-md-4">
+                <label for="repairValue" class="form-label fw-bold">Repair:</label>
+                <input type="number" class="form-control" id="repairValue" name="repairValue"
+                    [(ngModel)]="formValues.repairValue" required>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-3">
+            <div class="col-md-4">
+                <label for="RTOExpenseValue" class="form-label fw-bold">RTO Expenses:</label>
+                <input type="number" class="form-control" id="RTOExpenseValue" name="rtoExpenseValue"
+                    [(ngModel)]="formValues.rtoExpenseValue" required>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success" [disabled]="!valuesForm.form.valid">Save Values</button>
+            </div>
+        </div>
+    </form>
+</div>

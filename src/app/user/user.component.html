@@ -1,0 +1,141 @@
+<div class="container mt-4">
+    <form (ngSubmit)="onSubmit()" #selectionForm="ngForm">
+        <div class="row align-items-center">
+            <div class="col-md-2">
+                <label for="manufacturer" class="form-label fw-bold">Manufacturer:</label>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="manufacturer" name="manufacturer" [(ngModel)]="selectedManufacturer"
+                    required>
+                    <option value="" disabled>Select Manufacturer</option>
+                    <option value="eicher">Eicher</option>
+                    <option value="mahindra">Mahindra</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-3">
+            <div class="col-md-2">
+                <label for="model" class="form-label fw-bold">Model:</label>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="model" name="model" [(ngModel)]="selectedModel" required>
+                    <option value="" disabled>Select Model</option>
+                    <option value="380">380</option>
+                    <option value="480">480</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-3">
+            <div class="col-md-2">
+                <label for="year" class="form-label fw-bold">Year:</label>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="year" name="year" [(ngModel)]="selectedYear" required>
+                    <option value="" disabled>Select Year</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-4">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary" [disabled]="!selectionForm.form.valid">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- All value inputs section -->
+    <div *ngIf="showDetails">
+        <!-- Rear Tyre -->
+        <div class="row align-items-center mt-4">
+            <div class="col-md-2">
+                <label for="rearTyrePercentage" class="form-label fw-bold">Rear Tyre:</label>
+            </div>
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="rearTyrePercentage" [(ngModel)]="rearTyrePercentage"
+                    min="0" max="100" placeholder="Enter percentage">
+            </div>
+        </div>
+
+        <!-- Front Tyre -->
+        <div class="row align-items-center mt-3">
+            <div class="col-md-2">
+                <label for="frontTyrePercentage" class="form-label fw-bold">Front Tyre:</label>
+            </div>
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="frontTyrePercentage" [(ngModel)]="frontTyrePercentage"
+                    min="0" max="100" placeholder="Enter percentage">
+            </div>
+        </div>
+
+        <!-- Look -->
+        <div class="row align-items-center mt-3">
+            <div class="col-md-2">
+                <label for="lookPercentage" class="form-label fw-bold">Look:</label>
+            </div>
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="lookPercentage" [(ngModel)]="lookPercentage" min="0"
+                    max="100" placeholder="Enter percentage">
+            </div>
+        </div>
+
+        <!-- Owner -->
+        <div class="row align-items-center mt-3">
+            <div class="col-md-2">
+                <label for="owner" class="form-label fw-bold">Owner:</label>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="owner" [(ngModel)]="selectedOwner">
+                    <option value="" disabled selected>Select Owner</option>
+                    <option value="2">2nd</option>
+                    <option value="3">3rd</option>
+                    <option value="4">4th</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Repair -->
+        <div class="row align-items-center mt-3">
+            <div class="col-md-2">
+                <label for="repair" class="form-label fw-bold">Repair:</label>
+            </div>
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="repair" [(ngModel)]="repairValue"
+                    placeholder="Enter repair value">
+            </div>
+        </div>
+
+        <!-- RTO Expenses -->
+        <div class="row align-items-center mt-3">
+            <div class="col-md-2">
+                <label for="rtoExpenses" class="form-label fw-bold">RTO Expenses:</label>
+            </div>
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="rtoExpenses" [(ngModel)]="rtoExpenses"
+                    placeholder="Enter RTO expenses">
+            </div>
+        </div>
+
+        <!-- Calculate Button -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" (click)="calculateTotal()"
+                    [disabled]="!allFieldsFilled()">
+                    Calculate Value
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Display -->
+    <div class="row mt-4" *ngIf="showCalculation">
+        <div class="col-md-6">
+            <div class="alert alert-success">
+                <h4>Total Calculated Value: ₹{{ calculatedTotal }}</h4>
+            </div>
+        </div>
+    </div>
+</div>
